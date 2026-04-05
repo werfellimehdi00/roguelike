@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dlnlvsfyb3r14"]
+
+[ext_resource type="FontFile" uid="uid://dr201ov4c76pb" path="res://fonts/Crackman.otf" id="1_5fe42"]
+[ext_resource type="Script" uid="uid://cxa8aedrdda4h" path="res://interface_1.gd" id="1_ljp6d"]
+[ext_resource type="Texture2D" uid="uid://bkgrir378horu" path="res://graphics/player/player_simple.png" id="2_ljp6d"]
+[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="3_nh381"]
+
+[node name="interface1" type="Control" unique_id=1478221792]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljp6d")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1256828911]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5058824, 0, 0.7254902, 1)
+
+[node name="Label" type="Label" parent="." unique_id=645568651]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.5
+offset_top = 95.0
+offset_right = 35.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_5fe42")
+theme_override_font_sizes/font_size = 103
+text = "car game"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1035902614]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.435
+anchor_right = 0.535
+anchor_bottom = 0.435
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 77.100006
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ljp6d")
+
+[node name="Label2" type="Label" parent="." unique_id=604401827]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.655
+anchor_right = 0.5
+anchor_bottom = 0.655
+offset_left = -69.5
+offset_top = -11.5
+offset_right = 69.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nh381")
+theme_override_font_sizes/font_size = 24
+
+[node name="Label3" type="Label" parent="." unique_id=29026296]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.805
+anchor_right = 0.5
+anchor_bottom = 0.805
+offset_left = -92.5
+offset_top = -25.0
+offset_right = 92.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_nh381")
+theme_override_font_sizes/font_size = 19
+text = "press \"space\""

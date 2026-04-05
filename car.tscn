@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dtapujmre2oii"]
+
+[ext_resource type="Texture2D" uid="uid://ded8huv3lr1a7" path="res://graphics/cars/yellow.png" id="1_7822p"]
+[ext_resource type="Script" uid="uid://brqfxvp6mvmi4" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="PackedScene" uid="uid://3b3add5ovtwd" path="res://healthcomponent.tscn" id="3_06lh1"]
+[ext_resource type="PackedScene" uid="uid://b013jevgu1pl8" path="res://hitboxcomponent.tscn" id="4_td361"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uoj53"]
+size = Vector2(20, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72krn"]
+size = Vector2(20, 10.434783)
+
+[node name="car" type="CharacterBody2D" unique_id=874247558 groups=["enemies"]]
+scale = Vector2(4.025, 4.025)
+collision_layer = 31
+collision_mask = 23
+script = ExtResource("1_uoj53")
+speed = 96
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=10848162]
+position = Vector2(-0.05545807, -2.6205626)
+texture = ExtResource("1_7822p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374172341]
+position = Vector2(-0.05545807, -0.6205627)
+shape = SubResource("RectangleShape2D_uoj53")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=574469544]
+position = Vector2(-2.861023e-06, -0.9080373)
+
+[node name="healthcomponent" parent="." unique_id=480229623 instance=ExtResource("3_06lh1")]
+
+[node name="hitboxcomponent" parent="." unique_id=1678102089 instance=ExtResource("4_td361")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxcomponent" unique_id=881029132]
+position = Vector2(0, 2.7329183)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_72krn")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

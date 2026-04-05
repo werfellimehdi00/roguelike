@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b013jevgu1pl8"]
+
+[ext_resource type="Script" uid="uid://nex4kxjgyo44" path="res://hitboxcomponent.gd" id="1_ibugl"]
+
+[node name="hitboxcomponent" type="Area2D" unique_id=1678102089 node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_ibugl")
+health_component = NodePath("")
