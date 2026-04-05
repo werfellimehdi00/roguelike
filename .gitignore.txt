@@ -1,4 +1,0 @@
-.import/
-.export/
-export.cfg
-*.translation
