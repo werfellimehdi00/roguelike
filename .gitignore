@@ -1,4 +1,10 @@
+# Godot 4+
+.godot/
 .import/
+
+# Export files
 .export/
 export.cfg
+
+# Misc
 *.translation
