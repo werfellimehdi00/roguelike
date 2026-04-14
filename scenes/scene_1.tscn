@@ -34,6 +34,7 @@ size = Vector2(27, 26)
 
 [node name="scene1" type="Node2D" unique_id=882733084]
 script = ExtResource("1_lki8s")
+spawn_distance = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1679127753]
 position = Vector2(856, 635.99994)
@@ -419,29 +420,6 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("25_8hjx7")
 theme_override_font_sizes/font_size = 34
 text = "score: "
-
-[node name="carpositions" type="Node2D" parent="." unique_id=1875510832]
-
-[node name="Marker2D" type="Marker2D" parent="carpositions" unique_id=388669817]
-position = Vector2(72, 381)
-
-[node name="Marker2D2" type="Marker2D" parent="carpositions" unique_id=1777573094]
-position = Vector2(163, 840)
-
-[node name="Marker2D3" type="Marker2D" parent="carpositions" unique_id=2132291845]
-position = Vector2(158, 607)
-
-[node name="Marker2D4" type="Marker2D" parent="carpositions" unique_id=89649073]
-position = Vector2(1029, 890)
-
-[node name="Marker2D5" type="Marker2D" parent="carpositions" unique_id=866545333]
-position = Vector2(1237, 293)
-
-[node name="Marker2D6" type="Marker2D" parent="carpositions" unique_id=211735012]
-position = Vector2(1649, 581)
-
-[node name="Marker2D7" type="Marker2D" parent="carpositions" unique_id=831861817]
-position = Vector2(1556, 931)
 
 [connection signal="timeout" from="timer/cartimer" to="." method="_on_cartimer_timeout"]
 [connection signal="timeout" from="timer/scoretimer" to="." method="_on_scoretimer_timeout"]

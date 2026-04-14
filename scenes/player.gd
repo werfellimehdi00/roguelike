@@ -7,6 +7,7 @@ var speed: int = 400
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 1.0
 var fire_timer: float = 0.0
+var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _process(delta):
 	fire_timer += delta
@@ -17,11 +18,21 @@ func _process(delta):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	
-	direction=Input.get_vector("left","right","up","down")
+	direction = Input.get_vector("left", "right", "up", "down")
 	animation()
-	velocity = direction * speed
+	
+	# 1. Calculate walking velocity
+	var walking_velocity = direction * speed
+	
+	# 2. Add them together
+	velocity = walking_velocity + knockback_velocity
+	
+	# 3. Apply physics
 	move_and_slide()
+	
+	# 4. CRITICAL CHANGE: Use a higher lerp weight for a "snappy" stop
+	# Change 0.1 to 0.2 or 0.3 to make the slide shorter and "punchier"
+	knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.2)
 
 func animation():
 	if direction:

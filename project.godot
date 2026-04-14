@@ -26,6 +26,7 @@ Global="*uid://bdqjruu42g3dc"
 [global_group]
 
 enemies=""
+player=""
 
 [input]
 

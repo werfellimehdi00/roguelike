@@ -9,12 +9,16 @@
 size = Vector2(20, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72krn"]
-size = Vector2(20, 10.434783)
+size = Vector2(22.360266, 9.192553)
+
+[sub_resource type="Gradient" id="Gradient_06lh1"]
+offsets = PackedFloat32Array(0, 0.50980395, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="car" type="CharacterBody2D" unique_id=874247558 groups=["enemies"]]
 scale = Vector2(4.025, 4.025)
-collision_layer = 31
-collision_mask = 23
+collision_layer = 8
+collision_mask = 15
 script = ExtResource("1_uoj53")
 speed = 96
 
@@ -26,16 +30,33 @@ texture = ExtResource("1_7822p")
 position = Vector2(-0.05545807, -0.6205627)
 shape = SubResource("RectangleShape2D_uoj53")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=574469544]
-position = Vector2(-2.861023e-06, -0.9080373)
-
 [node name="healthcomponent" parent="." unique_id=480229623 instance=ExtResource("3_06lh1")]
 
-[node name="hitboxcomponent" parent="." unique_id=1678102089 instance=ExtResource("4_td361")]
+[node name="hitboxcomponent" parent="." unique_id=1678102089 node_paths=PackedStringArray("health_component") instance=ExtResource("4_td361")]
+collision_layer = 8
+collision_mask = 55
+health_component = NodePath("../healthcomponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxcomponent" unique_id=881029132]
-position = Vector2(0, 2.7329183)
-scale = Vector2(0.9999997, 0.9999997)
+position = Vector2(0.2484481, -0.62111765)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_72krn")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=229778326]
+emitting = false
+amount = 30
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.1
+initial_velocity_max = 173.44
+damping_min = 20.0
+damping_max = 40.0
+angle_max = 359.5
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_06lh1")
+
+[connection signal="body_entered" from="hitboxcomponent" to="." method="_on_hitboxcomponent_body_entered"]
