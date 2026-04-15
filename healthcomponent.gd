@@ -1,5 +1,8 @@
 extends Node2D
 class_name Healthcomponent
+
+
+var xp_item_scene = preload("res://xp_item.tscn")
 @export var max_health:=100
 var health:float
 
@@ -42,11 +45,14 @@ func damage(attack : Attack):
 			# Use the path to your menu scene
 			get_tree().call_deferred("change_scene_to_file", "res://interface_1.tscn")
 		else:
+			var loot = xp_item_scene.instantiate()
+			loot.global_position = get_parent().global_position
+			get_tree().root.call_deferred("add_child", loot)
 			var particles = parent.get_node_or_null("deathParticles")
 			if particles:
 				parent.remove_child(particles)
 				particles.emitting = true
-				get_tree().root.add_child(particles)
+				get_tree().root.call_deferred("add_child", particles)
 				particles.global_position = parent.global_position
 			# Increment score in Global script before freeing the car
 			Global.score += 10 

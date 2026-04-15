@@ -10,17 +10,25 @@ var score: int
 
 func _ready()-> void:
 	player = get_tree().get_first_node_in_group("player")
+	$CanvasLayer/XPBar.max_value = Global.xp_to_next_level
+	$CanvasLayer/XPBar.value = Global.current_xp
+	
 
 
 func go_title():
 	get_tree().change_scene_to_file("res://interface_1.tscn")
 
-
+func _process(_delta: float) -> void:
+	# Keep the UI synced with the Global variables
+	if has_node("CanvasLayer/XPBar"):
+		$CanvasLayer/XPBar.max_value = Global.xp_to_next_level
+		$CanvasLayer/XPBar.value = Global.current_xp
+	if has_node("CanvasLayer/Label"):
+		$CanvasLayer/Label.text = "Score: " + str(Global.score)
 
 func get_random_spawn_position() -> Vector2:
-	var max_attempts = 10 # Don't loop forever if the map is too crowded  
+	var max_attempts = 5 # Don't loop forever if the map is too crowded  
 	for i in range(max_attempts):
-		print("Player is currently at: ", player.global_position)
 	# 1. Choose a random direction (TAU = 360 degrees)
 		var random_angle = randf() * TAU
 		var direction = Vector2(cos(random_angle), sin(random_angle)) 
@@ -28,8 +36,9 @@ func get_random_spawn_position() -> Vector2:
 		# 3. Ask the physics engine: "Is this spot clear?"
 		if is_spot_empty(test_pos):
 			return test_pos
-	var fallback_angle = randf() * TAU
-	return player.global_position + (Vector2(cos(fallback_angle), sin(fallback_angle)) * 350.0)
+	#var fallback_angle = randf() * TAU
+	#return player.global_position + (Vector2(cos(fallback_angle), sin(fallback_angle)) * 350.0)
+	return Vector2.ZERO
 
 
 func is_spot_empty(pos: Vector2) -> bool:
@@ -59,8 +68,3 @@ func _on_cartimer_timeout() -> void:
 		var car = carscene.instantiate()
 		car.global_position = spawn_pos
 		$objects.add_child(car)
-
-
-func _on_scoretimer_timeout() -> void:
-	score += 1
-	$CanvasLayer/Label.text = "score: " + str(score)

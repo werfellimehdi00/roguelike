@@ -61,4 +61,11 @@ func fire_at_nearest_enemy():
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = global_position
 		bullet.target = nearest_enemy
-		get_tree().root.add_child(bullet)
+		var objects_node = get_tree().current_scene.get_node_or_null("objects")
+		if objects_node:
+			objects_node.add_child(bullet)
+		else:
+			get_tree().root.add_child(bullet)
+		
+		
+		

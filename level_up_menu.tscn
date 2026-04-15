@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://d3emtm15b3fhx"]
+
+[ext_resource type="Script" uid="uid://qlv8eqp6a2ue" path="res://level_up_menu.gd" id="1_25e3i"]
+[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="2_j46r6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nysvr"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmkxh"]
+bg_color = Color(0.7466999, 0.494, 0.76, 0.54509807)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="LevelUpMenu" type="CanvasLayer" unique_id=1783691397]
+process_mode = 3
+script = ExtResource("1_25e3i")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1117851294]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.59607846)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=640134335]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -182.0
+offset_right = 320.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1938912977]
+layout_mode = 2
+
+[node name="LEVELUP" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1651657163]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_j46r6")
+theme_override_font_sizes/font_size = 48
+text = "!!!LEVEL UP!!!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1912470148]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Option1" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1459940502]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nysvr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rmkxh")
+text = "\"Overclock\"
+
++50 Movement Speed"
+
+[node name="Option2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1567999500]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nysvr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rmkxh")
+text = "\"Turbo Loader\"
+
+-20% Reload Time"
+
+[node name="Option3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1219483838]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nysvr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rmkxh")
+text = "\"Reinforced Chassis\"
++20 Health²"

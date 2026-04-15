@@ -5,8 +5,9 @@ extends CharacterBody2D
 var direction
 @export var speed = 00 
 @export var damage_amount = 10
-var health:float
+var health:float = 20
 var player = null
+var xp_item_scene = preload("res://xp_item.tscn")
 var colors = [preload("res://graphics/cars/green.png"),
 				 preload("res://graphics/cars/red.png")
 			   ,preload("res://graphics/cars/yellow.png")]
